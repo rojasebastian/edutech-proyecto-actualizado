@@ -43,4 +43,27 @@ public class CourseComment {
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
+
+    public Integer getCourseId() {
+        return course != null ? course.getId() : null;
+    }
+
+    public void setCourseId(Integer courseId) {
+        if (course == null) {
+            course = new Course();
+        }
+        course.setId(courseId);
+    }
+
+    public Integer getUserId() {
+        return user != null ? user.getId() : null;
+    }
+
+    public void setUserId(Integer userId) {
+        if (user == null) {
+            user = new User();
+        }
+        user.setId(userId);
+    }
+
 }
