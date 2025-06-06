@@ -2,7 +2,7 @@ package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.RoleDTO;
 import com.edutech.proyecto.edutech_proyecto.entity.Role;
-import com.edutech.proyecto.edutech_proyecto.exception.ResourceNotFoundException;
+
 import com.edutech.proyecto.edutech_proyecto.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class RoleService {
 
     public RoleDTO findById(Integer id) {
         Role role = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Rol no encontrado con ID: " + id));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Rol no encontrado con ID: " + id));
         return RoleDTO.fromEntity(role);
     }
 
@@ -30,7 +30,7 @@ public class RoleService {
     }
 
     public RoleDTO update(Integer id, RoleDTO dto) {
-        repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Rol no encontrado con ID: " + id));
+        repo.findById(id).orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Rol no encontrado con ID: " + id));
         Role role = RoleDTO.toEntity(dto);
         role.setId(id);
         return RoleDTO.fromEntity(repo.save(role));
@@ -38,14 +38,14 @@ public class RoleService {
 
     public void delete(Integer id) {
         Role role = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Rol no encontrado con ID: " + id));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Rol no encontrado con ID: " + id));
         repo.delete(role);
     }
 
     public RoleDTO findByName(String name) {
         Role role = repo.findByName(name);
         if (role == null) {
-            throw new ResourceNotFoundException("Rol no encontrado con nombre: " + name);
+            throw new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Rol no encontrado con nombre: " + name);
         }
         return RoleDTO.fromEntity(role);
     }

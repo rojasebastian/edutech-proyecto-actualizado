@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-role", url = "http://localhost:8080/api/role")
+@FeignClient(name = "ms-role", url = "http://localhost:3306/api/role")
 public interface RoleClient {
 
     @GetMapping

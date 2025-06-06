@@ -2,7 +2,7 @@ package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.CourseQuizDTO;
 import com.edutech.proyecto.edutech_proyecto.entity.CourseQuiz;
-import com.edutech.proyecto.edutech_proyecto.exception.ResourceNotFoundException;
+
 import com.edutech.proyecto.edutech_proyecto.repository.CourseQuizRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class CourseQuizService {
 
     public CourseQuizDTO findById(Integer id) {
         CourseQuiz quiz = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Quiz no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Quiz no encontrado"));
         return CourseQuizDTO.fromEntity(quiz);
     }
 
@@ -29,7 +29,7 @@ public class CourseQuizService {
     }
 
     public CourseQuizDTO update(Integer id, CourseQuizDTO dto) {
-        repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Quiz no encontrado"));
+        repo.findById(id).orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Quiz no encontrado"));
         CourseQuiz entity = CourseQuizDTO.toEntity(dto);
         entity.setId(id);
         return CourseQuizDTO.fromEntity(repo.save(entity));
@@ -37,7 +37,7 @@ public class CourseQuizService {
 
     public void delete(Integer id) {
         CourseQuiz quiz = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Quiz no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Quiz no encontrado"));
         repo.delete(quiz);
     }
 

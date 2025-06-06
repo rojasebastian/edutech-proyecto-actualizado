@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-course-quizquestion", url = "http://localhost:8080/api/course-quizquestion")
+@FeignClient(name = "ms-course-quizquestion", url = "http://localhost:3306/api/course-quizquestion")
 public interface CourseQuizQuestionClient {
 
     @GetMapping

@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface CourseCommentRepository extends JpaRepository<CourseComment, Integer> {
-    List<CourseComment> findByCourseId(Integer courseId);
-    List<CourseComment> findByUserId(Integer userId);
-    List<CourseComment> findByCourseIdAndUserId(Integer courseId, Integer userId);
+    List<CourseComment> findByCourse_Id(Integer courseId);
+    List<CourseComment> findByUser_Id(Integer userId);
+    List<CourseComment> findByCourse_IdAndUser_Id(Integer courseId, Integer userId);
 
 
 }

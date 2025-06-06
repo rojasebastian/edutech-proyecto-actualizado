@@ -2,7 +2,7 @@ package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.PaymentDTO;
 import com.edutech.proyecto.edutech_proyecto.entity.Payment;
-import com.edutech.proyecto.edutech_proyecto.exception.ResourceNotFoundException;
+
 import com.edutech.proyecto.edutech_proyecto.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class PaymentService {
 
     public PaymentDTO findById(Integer id) {
         Payment payment = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Pago no encontrado"));
         return PaymentDTO.fromEntity(payment);
     }
 
@@ -33,7 +33,7 @@ public class PaymentService {
 
     public PaymentDTO update(Integer id, PaymentDTO dto) {
         repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Pago no encontrado"));
         Payment payment = PaymentDTO.toEntity(dto);
         payment.setId(id);
         return PaymentDTO.fromEntity(repository.save(payment));
@@ -41,7 +41,7 @@ public class PaymentService {
 
     public void delete(Integer id) {
         Payment payment = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Pago no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Pago no encontrado"));
         repository.delete(payment);
     }
 

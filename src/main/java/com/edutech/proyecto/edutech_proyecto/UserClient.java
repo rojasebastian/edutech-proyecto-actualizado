@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-user", url = "http://localhost:8080/api/user")
+@FeignClient(name = "ms-user", url = "http://localhost:3306/api/user")
 public interface UserClient {
 
 

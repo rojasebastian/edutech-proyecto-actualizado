@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-student-mark", url = "http://localhost:8080/api/student-mark")
+@FeignClient(name = "ms-student-mark", url = "http://localhost:3306/api/student-mark")
 public interface StudentMarkClient {
 
 

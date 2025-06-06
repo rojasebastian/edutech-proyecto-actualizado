@@ -3,7 +3,7 @@ package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.CourseContentDTO;
 import com.edutech.proyecto.edutech_proyecto.entity.CourseContent;
-import com.edutech.proyecto.edutech_proyecto.exception.ResourceNotFoundException;
+
 import com.edutech.proyecto.edutech_proyecto.repository.CourseContentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class CourseContentService {
 
     public CourseContentDTO findById(Integer id) {
         CourseContent content = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Contenido no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Contenido no encontrado"));
         return CourseContentDTO.fromEntity(content);
     }
 
@@ -39,7 +39,7 @@ public class CourseContentService {
     }
 
     public CourseContentDTO update(Integer id, CourseContentDTO dto) {
-        repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Contenido no encontrado"));
+        repo.findById(id).orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Contenido no encontrado"));
         CourseContent content = CourseContentDTO.toEntity(dto);
         content.setId(id);
         return CourseContentDTO.fromEntity(repo.save(content));
@@ -47,7 +47,7 @@ public class CourseContentService {
 
     public void delete(Integer id) {
         CourseContent content = repo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Contenido no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Contenido no encontrado"));
         repo.delete(content);
     }
 }

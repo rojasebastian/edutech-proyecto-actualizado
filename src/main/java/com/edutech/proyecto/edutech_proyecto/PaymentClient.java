@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-payment", url = "http://localhost:8080/api/payment")
+@FeignClient(name = "ms-payment", url = "http://localhost:3306/api/payment")
 public interface PaymentClient {
 
     @GetMapping

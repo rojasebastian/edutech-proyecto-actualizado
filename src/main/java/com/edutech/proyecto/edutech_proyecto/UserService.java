@@ -2,7 +2,6 @@ package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.UserDTO;
 import com.edutech.proyecto.edutech_proyecto.entity.User;
-import com.edutech.proyecto.edutech_proyecto.exception.ResourceNotFoundException;
 import com.edutech.proyecto.edutech_proyecto.repository.RoleRepository;
 import com.edutech.proyecto.edutech_proyecto.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,7 @@ public class UserService {
     }
     public UserDTO findById(Integer id) {
         User user = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Usuario no encontrado"));
         return UserDTO.fromEntity(user);
     }
 
@@ -34,7 +33,7 @@ public class UserService {
 
     public UserDTO update(Integer id, UserDTO dto) {
         User existing = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Usuario no encontrado"));
 
         User updatedUser = dto.toEntity();
         updatedUser.setId(id);
@@ -46,7 +45,7 @@ public class UserService {
 
     public void delete(Integer id) {
         User existing = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("Usuario no encontrado"));
         repository.delete(existing);
     }
 }

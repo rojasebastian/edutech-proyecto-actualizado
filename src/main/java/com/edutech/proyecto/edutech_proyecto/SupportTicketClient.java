@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-support-ticket", url = "http://localhost:8080/api/support-ticket")
+@FeignClient(name = "ms-support-ticket", url = "http://localhost:3306/api/support-ticket")
 public interface SupportTicketClient {
 
 

@@ -2,7 +2,7 @@ package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.StudentMarkDTO;
 import com.edutech.proyecto.edutech_proyecto.entity.StudentMark;
-import com.edutech.proyecto.edutech_proyecto.exception.ResourceNotFoundException;
+
 import com.edutech.proyecto.edutech_proyecto.repository.StudentMarkRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class StudentMarkService {
 
     public StudentMarkDTO findById(Integer id) {
         StudentMark entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("StudentMark no encontrada"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("StudentMark no encontrada"));
         return StudentMarkDTO.fromEntity(entity);
     }
 
@@ -36,7 +36,7 @@ public class StudentMarkService {
 
     public StudentMarkDTO update(Integer id, StudentMarkDTO dto) {
         repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("StudentMark no encontrada"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("StudentMark no encontrada"));
         StudentMark entity = dto.toEntity();
         entity.setId(id);
         return StudentMarkDTO.fromEntity(repository.save(entity));
@@ -44,7 +44,7 @@ public class StudentMarkService {
 
     public void delete(Integer id) {
         StudentMark entity = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("StudentMark no encontrada"));
+                .orElseThrow(() -> new com.edutech.microservice.course_category.exception.ResourceNotFoundException("StudentMark no encontrada"));
         repository.delete(entity);
     }
 }

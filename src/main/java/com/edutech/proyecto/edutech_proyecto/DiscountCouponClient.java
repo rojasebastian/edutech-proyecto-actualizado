@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-discount-coupon", url = "http://localhost:8080/api/discount-coupon")
+@FeignClient(name = "ms-discount-coupon", url = "http://localhost:3306/api/discount-coupon")
 public interface DiscountCouponClient {
 
 

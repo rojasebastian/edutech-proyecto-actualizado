@@ -1,6 +1,5 @@
-package com.edutech.proyecto.edutech_proyecto.exception;
+package com.edutech.microservice.course_category.exception;
 
-import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -18,8 +17,8 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(com.edutech.microservice.course_category.exception.ResourceNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleNotFound(com.edutech.microservice.course_category.exception.ResourceNotFoundException ex) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleNotFound(ResourceNotFoundException ex) {
         return buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
