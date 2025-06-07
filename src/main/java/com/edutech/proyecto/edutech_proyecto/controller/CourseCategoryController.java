@@ -29,11 +29,11 @@ public class CourseCategoryController {
     public ResponseEntity<CourseCategoryDTO> create(@RequestBody @Valid CourseCategoryDTO dto) {
         return ResponseEntity.ok(service.create(dto));
     }
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<CourseCategoryDTO> update(@PathVariable Integer id,@Valid @RequestBody CourseCategoryDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();

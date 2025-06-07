@@ -1,6 +1,7 @@
 package com.edutech.proyecto.edutech_proyecto;
 
 import com.edutech.proyecto.edutech_proyecto.dto.UserDTO;
+import com.edutech.proyecto.edutech_proyecto.entity.Role;
 import com.edutech.proyecto.edutech_proyecto.entity.User;
 import com.edutech.proyecto.edutech_proyecto.repository.RoleRepository;
 import com.edutech.proyecto.edutech_proyecto.repository.UserRepository;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repository;
+    private final RoleRepository roleRepository;
 
     public List<UserDTO> findAll() {
         return repository.findAll().stream()
@@ -27,7 +29,13 @@ public class UserService {
     }
 
     public UserDTO create(UserDTO dto) {
+
+        Role role = roleRepository.findById(dto.getRoleId())
+                .orElseThrow(() -> new IllegalArgumentException("Rol no encontrado con ID: " + dto.getRoleId()));
+
         User user = dto.toEntity();
+        user.setRole(role);
+
         return UserDTO.fromEntity(repository.save(user));
     }
 

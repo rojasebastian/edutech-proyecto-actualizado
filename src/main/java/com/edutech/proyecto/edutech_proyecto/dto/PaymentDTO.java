@@ -54,6 +54,12 @@ public class PaymentDTO {
         payment.setPaymentInstitution(dto.getPaymentInstitution());
         payment.setTransactionId(dto.getTransactionId());
         payment.setStatus(dto.getStatus());
+
+
+        User user = new User();
+        user.setId(dto.getUserId());
+        payment.setUser(user);
+
         return payment;
     }
 }
